@@ -1,0 +1,3 @@
+azure-identity
+azure-mgmt-containerservice
+azure-mgmt-network

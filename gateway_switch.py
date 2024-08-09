@@ -60,26 +60,24 @@ if __name__ == "__main__":
         description="Start or stop Kubernetes services in a specified Azure "
                     "resource group.")
 
-    parser.add_argument("subid", type=str, help="Subscription ID of azure "
-                                                "account.")
-    parser.add_argument(
-        "rg_name",
-        type=str,
-        help="The name of the Azure resource group."
-    )
-    parser.add_argument("gw_name",
-                        type=str, required=False,
+    parser.add_argument("--subid", type=str, required=True,
+                        help="Subscription ID of azure account.")
+    parser.add_argument("--rg_name", type=str, required=True,
+                        help="The name of the Azure resource group.")
+    parser.add_argument("--gw_name",
+                        type=str, required=True,
                         help="The name of Gateway.")
     parser.add_argument(
-        "cluster_name",
+        "--cluster_name",
         type=str,
-        required=False,
+        required=True,
         help="The name of the Kubernetes service (AKS cluster)."
     )
     parser.add_argument(
-        "action",
+        "--action",
         type=str,
         choices=["start", "stop"],
+        required=True,
         help="The action to perform: 'start' or 'stop'."
     )
     args = parser.parse_args()
@@ -115,10 +113,3 @@ if __name__ == "__main__":
         else:
             print("Please enter valid argument for start/stop action for "
                   "Azure Kubernetes service.")
-
-
-
-
-
-
-
